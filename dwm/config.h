@@ -1,5 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
+/* appearance */
 static unsigned int borderpx  = 1;        /* border pixel of windows */
 static unsigned int snap      = 32;       /* snap pixel */
 static int showbar            = 1;        /* 0 means no bar */
@@ -19,48 +20,14 @@ static char *colors[][3] = {
 	[SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 
-/* appearance */
-// static const unsigned int borderpx  = 1;        /* border pixel of windows */
-// static const unsigned int snap      = 32;       /* snap pixel */
-// static const int showbar            = 1;        /* 0 means no bar */
-// static const int topbar             = 1;        /* 0 means bottom bar */
-// static const char *fonts[]          = { "UbuntuMono-B:size=15" };
-// static const char dmenufont[]       = "UbuntuMono-B:size=15";
-// static const char col_gray1[]       = "#222222";
-// static const char col_gray2[]       = "#444444";
-// static const char col_gray3[]       = "#bbbbbb";
-// static const char col_gray4[]       = "#eeeeee";
-// static const char col_cyan[]        = "#005577";
-
-//
-
-// static const char *colors[][3]      = {
-// 	/*               fg         bg         border   */
-// 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-// 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
-// };
-
-
-// new color code
-
-//// #003049, #D62828, #F77F00, #FCBF49, #EAE2B7
-//
-//static const char col_navy_blue[] = "#003049";
-//static const char col_sun_red[] = "#D62828";
-//static const char col_orange[] = "#F77F00";
-//static const char col_yellow[] = "#FCBF49";
-//static const char col_light_yellow[] = "#EAE2B7";
-//
-//static const char *colors[][3]      = {
-//	/*               fg         bg         border   */
-//	[SchemeNorm] = { col_navy_blue, col_yellow, col_orange },
-//	[SchemeSel]  = { col_sun_red, col_light_yellow,  col_light_yellow  },
-//	
-//};
-
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+//static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+//static const char *tags[] = { "", ":", """, "  ", "5", "6", "7", "8", "9" };
+//static const char *tags[] = { "", "", "", "", "", "", "7", "8", "9" };
+static const char *tags[] = { "", "", "", "", "", "",};
+
+
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -69,13 +36,11 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "st",       NULL,       NULL,       1 << 0,       0,           -1 },
+	{ "firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
 };
 
 /* layout(s) */
-//static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
-//static const int nmaster     = 1;    /* number of clients in master area */
-//static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static int nmaster     = 1;    /* number of clients in master area */
 static int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
@@ -101,11 +66,9 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-//static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
+	"-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
-
-
 
 
 /*
@@ -128,7 +91,6 @@ ResourcePref resources[] = {
 		{ "resizehints",       	INTEGER, &resizehints },
 		{ "mfact",      	 	FLOAT,   &mfact },
 };
-
 
 
 static const Key keys[] = {
